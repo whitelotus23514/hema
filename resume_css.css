@@ -1,0 +1,175 @@
+/* styles.css
+   Modern, responsive resume styles for the provided HTML
+   Optional: import a web font (uncomment the next line if you add a Google Font link)
+*/
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap'); */
+
+:root{
+  --bg: #f4f4f9;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --text: #111827;
+  --accent: #6c5ce7; /* purple-ish accent */
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  --max-width: 900px;
+  --gap: 22px;
+}
+
+/* Reset / base */
+* { box-sizing: border-box; }
+html,body { height:100%; }
+body{
+  margin:0;
+  min-height:100%;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+  padding: 28px;
+}
+
+/* Container */
+.container{
+  max-width: var(--max-width);
+  margin: 0 auto;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px 36px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(15,23,42,0.04);
+}
+
+/* Header */
+header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+h1{
+  font-size: 1.8rem;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  color: var(--text);
+}
+
+.contact{
+  text-align: right;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.contact p { margin: 2px 0; }
+.contact strong { color: var(--text); font-weight:600; }
+
+/* Section headings */
+.section{
+  margin-top: var(--gap);
+}
+
+h2{
+  font-size: 1.15rem;
+  margin: 0 0 10px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid rgba(15,23,42,0.04);
+  color:var(--text);
+  font-weight: 600;
+}
+
+/* Paragraphs & lists */
+p { margin: 0 0 10px 0; color: #374151; }
+ul {
+  margin: 8px 0 16px 20px;
+  padding: 0;
+  color: #374151;
+}
+ul li { margin-bottom: 6px; }
+
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: 8px;
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 6px 0 10px 0;
+  font-size: 0.95rem;
+}
+th, td {
+  padding: 10px 12px;
+  border: 1px solid rgba(15,23,42,0.06);
+  text-align: left;
+}
+th {
+  background: linear-gradient(180deg, rgba(15,23,42,0.02), rgba(15,23,42,0.01));
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Technical/Cert lists — make them compact and card-like */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+.tech-item {
+  background: linear-gradient(180deg, rgba(108,92,231,0.04), rgba(108,92,231,0.01));
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(108,92,231,0.06);
+  font-weight: 500;
+  color: #2b2b2b;
+}
+
+/* Small utility */
+.badge {
+  display:inline-block;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  background: rgba(108,92,231,0.1);
+  color: var(--accent);
+  border: 1px solid rgba(108,92,231,0.12);
+  margin-right: 6px;
+}
+
+/* Footer / declaration */
+footer h2 { margin-top: 18px; }
+footer p { font-size: 0.95rem; color: #374151 }
+
+/* Responsive */
+@media (max-width: 720px){
+  .container{
+    padding: 18px;
+  }
+  header{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .contact { text-align: left; margin-top: 8px; }
+  h1 { font-size: 1.4rem; }
+  h2 { font-size: 1rem; padding-bottom: 6px; }
+}
+
+/* Print-friendly adjustments */
+@media print {
+  body { background: white; padding: 0; }
+  .container { box-shadow: none; border: none; max-width: 100%; border-radius: 0; padding: 0.5in; }
+  a::after { content: " (" attr(href) ")"; font-size: 0.8em; color: black; }
+  .contact { color: black; }
+  .badge { display:none; }
+}
+
+/* Small accessibility helpers */
+@media (prefers-reduced-motion: reduce){
+  * { transition: none !important; animation: none !important; }
+}
